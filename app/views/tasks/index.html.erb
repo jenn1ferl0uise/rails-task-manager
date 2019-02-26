@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>To Do:</h1>
+  <ul>
+    <% @tasks.each do |task| %>
+    <li>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          <%= link_to task.title, task_path(task) %>
+        </label>
+        <%= link_to raw('<i class="far fa-trash-alt"></i>'), delete_path,
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+        </div>
+    </li>
+  <% end %>
+  </ul>
+  <%= link_to raw('<button class="btn btn-light">Add new task</button>'), tasks_new_path,
+   method: :new %>
+</div>
